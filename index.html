@@ -84,21 +84,15 @@
 
     /* ── HERO ── */
     #beranda {
-      min-height: 100vh;
-      background:
-        linear-gradient(160deg, rgba(10,25,41,.80) 35%, rgba(10,61,98,.60) 100%),
-        url('kantordesa.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #beranda::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("kantordesa.jpg");
-      opacity: .5;
+  background:
+    linear-gradient(160deg, rgba(10,25,41,.80) 35%, rgba(10,61,98,.60) 100%),
+    url('kantordesa.jpg') center/cover no-repeat;
+  ...
+}
+#beranda::before {
+  background: url("kantordesa.jpg");
+  opacity: .5;
+}
     }
     .hero-content { position: relative; z-index: 2; }
     .hero-badge {
