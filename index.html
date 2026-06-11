@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Negeri Administratif Kobimukti — Seram Utara Timur Kobi</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Playfair Display + Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       CUSTOM STYLES
+       Palet:
+         --green-deep   #1A4D2E  (hijau tua tanah)
+         --green-mid    #2D7A47  (hijau padang)
+         --green-light  #4CAF6E  (hijau muda segar)
+         --blue-sea     #0D4C7A  (biru laut)
+         --blue-sky     #1976D2  (biru langit)
+         --gold         #C9A84C  (emas padi)
+         --cream        #F5F2EB  (putih krem tanah)
+         --dark         #0F1F10
+  ============================================================ -->
+  <style>
+    :root {
+      --green-deep:  #0D2B4E;
+      --green-mid:   #1A5C8A;
+      --green-light: #2E86C1;
+      --blue-sea:    #0A3D62;
+      --blue-sky:    #2874A6;
+      --gold:        #C9A84C;
+      --cream:       #EEF4FB;
+      --dark:        #0A1929;
+      --text-muted:  #4A617A;
+    }
+
+    /* ── BASE ── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #0D2B4E;
+    }
+
+    /* ── NAVBAR ── */
+    #mainNav {
+      background: rgba(10, 25, 41, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--gold);
+      transition: all .3s;
+    }
+    #mainNav .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--cream) !important;
+      line-height: 1.2;
+    }
+    #mainNav .navbar-brand span {
+      color: var(--gold);
+      display: block;
+      font-size: .72rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    #mainNav .nav-link {
+      color: rgba(245,242,235,.8) !important;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: .5rem .9rem !important;
+      transition: color .2s;
+    }
+    #mainNav .nav-link:hover,
+    #mainNav .nav-link.active {
+      color: var(--gold) !important;
+    }
+    .navbar-toggler { border-color: var(--gold); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── HERO ── */
+    #beranda {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(10,25,41,.80) 35%, rgba(10,61,98,.60) 100%),
+        url('kantordesa.JPG') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #beranda::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("kantordesa.JPG");
+      opacity: .5;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,.4);
+      padding: .3rem .9rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: .6rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: #5DADE2;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,.72);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .btn-hero-primary {
+      background: var(--blue-sky);
+      color: #fff;
+      border: none;
+      padding: .75rem 1.8rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: background .2s, transform .15s;
+    }
+    .btn-hero-primary:hover {
+      background: var(--green-mid);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+      padding: .75rem 1.8rem;
+      border-radius: 3px;
+      font-weight: 500;
+      font-size: .9rem;
+      transition: all .2s;
+    }
+    .btn-hero-outline:hover {
+      background: var(--gold);
+      color: #0F1F10;
+    }
+
+    /* ── HERO STATS ── */
+    .stat-strip {
+      border-top: 1px solid rgba(201,168,76,.25);
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-item .lbl {
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-top: .2rem;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 0; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue-sky);
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-divider {
+      width: 52px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-sky), var(--gold));
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .bg-cream { background: var(--cream); }
+
+    /* ── PROFIL CARDS ── */
+    .profil-card {
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 18px rgba(0,0,0,.07);
+      transition: transform .25s, box-shadow .25s;
+      height: 100%;
+    }
+    .profil-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+    .profil-card .card-header {
+      background: linear-gradient(135deg, var(--green-deep), var(--blue-sky));
+      color: #fff;
+      border: none;
+      padding: 1.2rem 1.4rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+    }
+    .profil-card .card-header i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-right: .6rem;
+    }
+    .profil-card .card-body { padding: 1.4rem; }
+    .profil-card p { font-size: .9rem; line-height: 1.75; color: #1a3a5c; }
+
+    /* ── VISI MISI ── */
+    #visi-misi { background: linear-gradient(160deg, #0A1929 0%, #0A3D62 100%); }
+    .visi-box {
+      border-left: 4px solid var(--gold);
+      padding: 1.8rem 2rem;
+      background: rgba(255,255,255,.07);
+      border-radius: 0 8px 8px 0;
+      backdrop-filter: blur(6px);
+    }
+    .visi-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.65;
+    }
+    .misi-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding: .85rem 1rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,.06);
+      margin-bottom: .7rem;
+      transition: background .2s;
+    }
+    .misi-item:hover { background: rgba(255,255,255,.12); }
+    .misi-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+    .misi-item p { color: rgba(255,255,255,.85); font-size: .9rem; margin: 0; }
+
+    /* ── STRUKTUR ORGANISASI ── */
+    .org-chart-wrap {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    /* SVG Org Chart */
+    .org-node rect { rx: 6; ry: 6; }
+    .org-connector { stroke: var(--green-mid); stroke-width: 1.5; fill: none; }
+
+    /* Jabatan cards */
+    .jabatan-card {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      text-align: center;
+      padding: 1.4rem 1rem;
+      height: 100%;
+      transition: transform .2s;
+    }
+    .jabatan-card:hover { transform: translateY(-3px); }
+    .jabatan-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-sky), var(--green-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto .8rem;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    .jabatan-title { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--blue-sky); font-weight: 600; }
+    .jabatan-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin: .2rem 0 0; }
+
+    /* ── PELAYANAN ── */
+    .layanan-card {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+      padding: 2rem 1.5rem;
+      height: 100%;
+      transition: all .25s;
+      border-top: 3px solid transparent;
+      background: #fff;
+    }
+    .layanan-card:hover {
+      border-top-color: var(--blue-sky);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.1);
+    }
+    .layanan-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green-light), var(--blue-sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .layanan-card h5 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); }
+    .layanan-card p { font-size: .85rem; color: var(--text-muted); line-height: 1.65; }
+    .syarat-list { list-style: none; padding: 0; margin: 0; }
+    .syarat-list li { font-size: .82rem; color: var(--text-muted); padding: .2rem 0; }
+    .syarat-list li::before { content: '→ '; color: var(--blue-sky); font-weight: 700; }
+
+    /* ── SID ── */
+    #sid { background: linear-gradient(135deg, #0A3D62 0%, #0A1929 100%); }
+    .sid-channel {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 1.4rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: background .2s;
+    }
+    .sid-channel:hover { background: rgba(255,255,255,.15); }
+    .sid-channel-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 8px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: var(--dark);
+    }
+    .sid-channel h6 { color: #fff; font-weight: 600; font-size: .9rem; margin: 0 0 .15rem; }
+    .sid-channel p { color: rgba(255,255,255,.6); font-size: .78rem; margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 2px solid var(--gold);
+      color: rgba(255,255,255,.65);
+    }
+    footer .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: .8rem;
+    }
+    footer a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--gold); }
+    footer .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.2rem; font-size: .78rem; }
+    .footer-contact-item { display: flex; gap: .7rem; align-items: flex-start; font-size: .85rem; margin-bottom: .5rem; }
+    .footer-contact-item i { color: var(--gold); min-width: 16px; margin-top: .15rem; }
+
+
+    /* ── HERO UPLOAD HINT ── */
+    .hero-upload-hint {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: rgba(10,25,41,.75);
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 6px;
+      padding: .5rem 1rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.65);
+      cursor: pointer;
+      transition: background .2s;
+      z-index: 10;
+    }
+    .hero-upload-hint:hover { background: rgba(26,92,138,.75); color: #fff; }
+    .hero-upload-hint i { color: var(--gold); margin-right: .35rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      width: 44px;
+      height: 44px;
+      background: var(--blue-sky);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
+      z-index: 999;
+      transition: background .2s;
+    }
+    #backToTop:hover { background: var(--green-deep); }
+    #backToTop.show { display: flex; }
+
+    /* ── RESPONSIVE TWEAKS ── */
+    @media (max-width: 576px) {
+      .stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 2.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR — Sticky, gelap dengan aksen emas
+============================================================ -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top py-3">
+  <div class="container">
+    <!-- Brand / Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#beranda">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2D7A47,#1976D2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <i class="bi bi-tree-fill" style="color:#C9A84C;font-size:1.1rem;"></i>
+      </div>
+      <div>
+        Negeri Kobimukti
+        <span>Seram Utara Timur Kobi · Maluku Tengah</span>
+      </div>
+    </a>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto gap-1">
+        <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#profil">Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="#visi-misi">Visi &amp; Misi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#organisasi">Struktur Organisasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pelayanan">Pelayanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sid">Sistem Informasi</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO / BERANDA
+============================================================ -->
+<section id="beranda">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 hero-content">
+        <div class="hero-badge"><i class="bi bi-geo-alt-fill me-1"></i> Maluku Tengah · Provinsi Maluku</div>
+        <h1 class="hero-title">
+          Negeri Administratif<br>
+          <em>Kobimukti</em>
+        </h1>
+        <p class="hero-sub">
+          Desa agraris yang maju, mandiri, dan sejahtera berbasis kekayaan alam Seram — pertanian, perkebunan, dan perikanan yang lestari.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#profil" class="btn-hero-primary">
+            <i class="bi bi-compass me-1"></i> Jelajahi Desa
+          </a>
+          <a href="#pelayanan" class="btn-hero-outline">
+            <i class="bi bi-file-earmark-text me-1"></i> Layanan Warga
+          </a>
+        </div>
+
+        <!-- Statistik ringkas -->
+        <div class="stat-strip" style="grid-template-columns:repeat(2,1fr);max-width:360px;">
+          <div class="stat-item">
+            <div class="num">12 RT</div>
+            <div class="lbl">Rukun Tetangga</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">2 RW</div>
+            <div class="lbl">Rukun Warga</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RINGKASAN BERANDA — Info singkat & highlight desa
+============================================================ -->
+<section class="bg-cream">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8 reveal">
+        <p class="section-label">Tentang Kami</p>
+        <h2 class="section-title">Desa Kaya Potensi di Jantung Seram</h2>
+        <div class="section-divider"></div>
+        <p style="color:#374a3c;line-height:1.8;">
+          Negeri Administratif Kobimukti terletak di Kecamatan Seram Utara Timur Kobi, Kabupaten Maluku Tengah. Dikelilingi hutan tropis dan pesisir yang subur, desa ini menyimpan potensi pertanian, perkebunan, dan perikanan yang besar dan belum sepenuhnya dikembangkan.
+        </p>
+        <p style="color:#374a3c;line-height:1.8;">
+          Dengan semangat gotong royong yang kuat, masyarakat Kobimukti bersatu membangun desa yang mandiri, maju, dan tetap menjaga harmoni dengan alam.
+        </p>
+        <a href="#profil" class="btn btn-sm mt-2" style="background:var(--blue-sky);color:#fff;border-radius:3px;padding:.55rem 1.2rem;font-weight:600;">
+          Baca Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROFIL DESA
+============================================================ -->
+<section id="profil">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-label">Mengenal Lebih Dekat</p>
+      <h2 class="section-title">Profil Desa Kobimukti</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- Sejarah Singkat -->
+      <div class="col-lg-6 col-md-6 reveal">
+        <div class="profil-card card">
+          <div class="card-header d-flex align-items-center">
+            <i class="bi bi-book-half"></i> Sejarah Singkat
+          </div>
+          <div class="card-body">
+            <p>
+              Negeri Administratif Kobimukti terbentuk melalui pemekaran wilayah berdasarkan kebutuhan masyarakat akan pelayanan pemerintahan yang lebih dekat dan efektif. Nama <strong>"Kobimukti"</strong> berakar dari bahasa daerah setempat yang mencerminkan semangat kemerdekaan dan kejayaan masyarakat lokal.
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Letak Geografis -->
+      <div class="col-lg-6 col-md-6 reveal">
+        <div class="profil-card card">
+          <div class="card-header d-flex align-items-center">
+            <i class="bi bi-geo"></i> Letak Geografis
+          </div>
+          <div class="card-body">
+            <p>Kobimukti terletak di <strong>Pulau Seram</strong>, bagian utara-timur, dalam wilayah administrasi Kecamatan Seram Utara Timur Kobi, Kabupaten Maluku Tengah.</p>
+            <ul class="list-unstyled small" style="color:#374a3c;">
+              <li class="mb-1"><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Provinsi:</strong> Maluku</li>
+              <li class="mb-1"><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Kabupaten:</strong> Maluku Tengah</li>
+              <li class="mb-1"><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Kecamatan:</strong> Seram Utara Timur Kobi</li>
+              <li class="mb-1"><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Topografi:</strong> Dataran rendah pesisir &amp; perbukitan</li>
+              <li class="mb-1"><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Iklim:</strong> Tropis lembab, curah hujan tinggi</li>
+              <li><i class="bi bi-chevron-right me-1" style="color:var(--blue-sky);"></i><strong>Sumber air:</strong> Sungai, mata air, hujan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VISI DAN MISI
+============================================================ -->
+<section id="visi-misi">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-label" style="color:rgba(255,255,255,.55);">Arah &amp; Tujuan</p>
+      <h2 class="section-title" style="color:#fff;">Visi &amp; Misi</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+    <div class="row g-5 align-items-start">
+
+      <!-- VISI -->
+      <div class="col-lg-5 reveal">
+        <p class="section-label" style="color:var(--gold);">— Visi Desa</p>
+        <div class="visi-box">
+          <div class="visi-text">
+            "Mewujudkan Negeri Administratif Kobimukti sebagai desa agraris yang maju, mandiri, sejahtera, dan berkelanjutan berbasis potensi pertanian, perkebunan, dan sumber daya lokal."
+          </div>
+        </div>
+        <p style="color:rgba(255,255,255,.55);font-size:.82rem;margin-top:1rem;">
+          <i class="bi bi-info-circle me-1"></i> Visi ini menjadi pedoman seluruh program pembangunan desa untuk periode pemerintahan saat ini.
+        </p>
+      </div>
+
+      <!-- MISI -->
+      <div class="col-lg-7 reveal">
+        <p class="section-label" style="color:var(--gold);">— Misi Desa</p>
+        <div class="misi-item">
+          <div class="misi-icon">1</div>
+          <p>Meningkatkan produktivitas pertanian melalui penerapan teknologi tepat guna dan pemberdayaan kelompok tani.</p>
+        </div>
+        <div class="misi-item">
+          <div class="misi-icon">2</div>
+          <p>Mengembangkan potensi perikanan dan kelautan sebagai sektor unggulan ekonomi masyarakat pesisir.</p>
+        </div>
+        <div class="misi-item">
+          <div class="misi-icon">3</div>
+          <p>Meningkatkan kualitas pelayanan publik yang cepat, transparan, dan mudah diakses oleh seluruh warga.</p>
+        </div>
+        <div class="misi-item">
+          <div class="misi-icon">4</div>
+          <p>Meningkatkan kualitas sumber daya manusia melalui pendidikan, pelatihan, dan pemberdayaan masyarakat.</p>
+        </div>
+        <div class="misi-item">
+          <div class="misi-icon">5</div>
+          <p>Membangun dan meningkatkan infrastruktur desa yang merata guna mendukung aktivitas ekonomi dan sosial.</p>
+        </div>
+        <div class="misi-item">
+          <div class="misi-icon">6</div>
+          <p>Menjaga kelestarian lingkungan hidup dan kearifan lokal sebagai warisan untuk generasi mendatang.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STRUKTUR ORGANISASI
+============================================================ -->
+<section id="organisasi" class="bg-cream">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-label">Pemerintahan Desa</p>
+      <h2 class="section-title">Struktur Organisasi</h2>
+      <div class="section-divider mx-auto"></div>
+      <p class="text-muted" style="max-width:520px;margin:0 auto;">Perangkat Negeri Administratif Kobimukti yang berkomitmen melayani masyarakat dengan penuh dedikasi.</p>
+    </div>
+
+    <!-- Foto Bagan Struktur Organisasi -->
+    <!-- CARA PAKAI: letakkan file foto bagan di folder yang sama dengan index.html,
+         lalu ganti "foto-bagan-struktur.jpg" di bawah dengan nama file foto Anda -->
+    <div class="org-chart-wrap mb-5 reveal" id="orgChartArea">
+      <img src="bagan.jpg"
+           alt="Bagan Struktur Organisasi Negeri Administratif Kobimukti"
+           style="max-width:100%;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.12);"
+           onerror="this.style.display='none';document.getElementById('orgPlaceholder').style.display='flex';">
+
+    <!-- Kartu Jabatan -->
+    <div class="row g-3 justify-content-center reveal">
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar"><i class="bi bi-person-badge"></i></div>
+          <div class="jabatan-title">Kepala Desa</div>
+          <div class="jabatan-name">Raja/Kepala Negeri</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar"><i class="bi bi-person-gear"></i></div>
+          <div class="jabatan-title">Sekretaris Desa</div>
+          <div class="jabatan-name">Sekretaris Negeri</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar" style="background:linear-gradient(135deg,#1976D2,#0D4C7A);"><i class="bi bi-cash-stack"></i></div>
+          <div class="jabatan-title">Kaur Keuangan</div>
+          <div class="jabatan-name">Bendahara Desa</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar" style="background:linear-gradient(135deg,#1976D2,#0D4C7A);"><i class="bi bi-clipboard2-check"></i></div>
+          <div class="jabatan-title">Kaur Umum</div>
+          <div class="jabatan-name">Administrasi Umum</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar" style="background:linear-gradient(135deg,#C9A84C,#A07828);"><i class="bi bi-bank"></i></div>
+          <div class="jabatan-title">Kasi Pemerintahan</div>
+          <div class="jabatan-name">Seksi Pemerintahan</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6">
+        <div class="jabatan-card">
+          <div class="jabatan-avatar" style="background:linear-gradient(135deg,#2E86C1,#0A3D62);"><i class="bi bi-hammer"></i></div>
+          <div class="jabatan-title">Kasi Pembangunan</div>
+          <div class="jabatan-name">Seksi Pembangunan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badan Permusyawaratan Desa -->
+    <div class="row mt-4 justify-content-center reveal">
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm text-center p-3" style="border-radius:8px;border-top:3px solid var(--gold);">
+          <i class="bi bi-people-fill" style="font-size:1.8rem;color:var(--gold);"></i>
+          <h6 class="mt-2 fw-bold" style="font-family:'Playfair Display',serif;">Badan Permusyawaratan Desa (BPD)</h6>
+          <p class="small text-muted mb-0">Lembaga yang menjalankan fungsi pemerintahan desa sebagai mitra sejajar Kepala Desa dalam pengawasan dan penyusunan peraturan desa.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm text-center p-3" style="border-radius:8px;border-top:3px solid var(--blue-sky);">
+          <i class="bi bi-house-heart-fill" style="font-size:1.8rem;color:var(--blue-sky);"></i>
+          <h6 class="mt-2 fw-bold" style="font-family:'Playfair Display',serif;">RT / RW</h6>
+          <p class="small text-muted mb-0">Ketua RT dan RW berperan sebagai ujung tombak pelayanan dan komunikasi antara pemerintah desa dengan warga di tingkat lingkungan.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PELAYANAN DESA
+============================================================ -->
+<section id="pelayanan">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="section-label">Untuk Warga Kami</p>
+      <h2 class="section-title">Pelayanan Desa</h2>
+      <div class="section-divider mx-auto"></div>
+      <p class="text-muted" style="max-width:500px;margin:0 auto;">
+        Kantor desa melayani berbagai kebutuhan administrasi warga setiap hari kerja. Datang langsung atau hubungi perangkat desa setempat.
+      </p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Surat Domisili -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="layanan-card">
+          <div class="layanan-icon"><i class="bi bi-house-check"></i></div>
+          <h5>Surat Keterangan Domisili</h5>
+          <p>Surat keterangan tempat tinggal resmi yang dibutuhkan untuk berbagai keperluan administrasi, pekerjaan, dan instansi.</p>
+          <ul class="syarat-list mt-2">
+            <li>Fotokopi KTP yang masih berlaku</li>
+            <li>Fotokopi KK</li>
+            <li>Surat pengantar dari RT/RW</li>
+            <li>Materai (jika dibutuhkan)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Surat Keterangan Usaha -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="layanan-card">
+          <div class="layanan-icon" style="background:linear-gradient(135deg,var(--gold),#A07828);"><i class="bi bi-shop"></i></div>
+          <h5>Surat Keterangan Usaha</h5>
+          <p>Diperlukan untuk legalisasi usaha kecil, pengajuan modal usaha, dan keperluan perbankan atau koperasi.</p>
+          <ul class="syarat-list mt-2">
+            <li>Fotokopi KTP pemilik usaha</li>
+            <li>Fotokopi KK</li>
+            <li>Surat pengantar RT/RW</li>
+            <li>Keterangan jenis usaha</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Surat Pengantar KTP -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="layanan-card">
+          <div class="layanan-icon" style="background:linear-gradient(135deg,var(--blue-sky),var(--blue-sea));"><i class="bi bi-card-text"></i></div>
+          <h5>Surat Pengantar KTP</h5>
+          <p>Surat pengantar dari desa sebagai syarat pembuatan atau perpanjangan Kartu Tanda Penduduk (KTP) di Dukcapil.</p>
+          <ul class="syarat-list mt-2">
+            <li>Foto 3×4 terbaru (2 lembar)</li>
+            <li>Fotokopi KK</li>
+            <li>Surat pengantar RT/RW</li>
+            <li>Akta kelahiran (bila ada)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Surat Pengantar KK -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="layanan-card">
+          <div class="layanan-icon" style="background:linear-gradient(135deg,#9C27B0,#6A1B9A);"><i class="bi bi-people"></i></div>
+          <h5>Surat Pengantar Kartu Keluarga</h5>
+          <p>Untuk keperluan pembuatan baru, pembaruan, atau penambahan anggota dalam Kartu Keluarga (KK) melalui Dukcapil.</p>
+          <ul class="syarat-list mt-2">
+            <li>Fotokopi KTP kepala keluarga</li>
+            <li>KK lama (bila ada)</li>
+            <li>Dokumen pendukung (nikah, dll)</li>
+            <li>Surat pengantar RT/RW</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Surat Tidak Mampu -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="layanan-card">
+          <div class="layanan-icon" style="background:linear-gradient(135deg,#E57373,#C62828);"><i class="bi bi-shield-heart"></i></div>
+          <h5>Surat Keterangan Tidak Mampu</h5>
+          <p>Diterbitkan bagi warga kurang mampu untuk keperluan beasiswa, keringanan biaya kesehatan, dan bantuan sosial.</p>
+          <ul class="syarat-list mt-2">
+            <li>Fotokopi KTP pemohon</li>
+            <li>Fotokopi KK</li>
+            <li>Surat pengantar RT/RW</li>
+            <li>Kunjungan verifikasi dari desa</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SISTEM INFORMASI DESA (SID)
+============================================================ -->
+<section id="sid">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-5 reveal">
+        <p class="section-label" style="color:rgba(255,255,255,.5);">Komunikasi &amp; Informasi</p>
+        <h2 class="section-title" style="color:#fff;">Sistem Informasi Desa</h2>
+        <div class="section-divider"></div>
+        <p style="color:rgba(255,255,255,.75);line-height:1.8;">
+          Pemerintah Negeri Administratif Kobimukti berkomitmen untuk menyebarkan informasi kepada seluruh lapisan masyarakat secara merata dan tepat sasaran.
+        </p>
+        <p style="color:rgba(255,255,255,.65);line-height:1.8;font-size:.9rem;">
+          Mengingat kondisi geografis dan keterbatasan infrastruktur digital, saat ini informasi desa masih disampaikan melalui saluran-saluran komunikasi tradisional dan komunitas yang telah dipercaya masyarakat.
+        </p>
+        <div class="mt-3 p-3" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:8px;">
+          <p style="color:var(--gold);font-size:.82rem;margin:0;">
+            <i class="bi bi-lightbulb me-2"></i>
+            Desa terus berupaya meningkatkan sistem informasi digital untuk memperluas akses layanan kepada seluruh warga.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-7 reveal">
+        <div class="row g-3">
+          <!-- Masjid -->
+          <div class="col-md-6">
+            <div class="sid-channel">
+              <div class="sid-channel-icon"><i class="bi bi-megaphone-fill"></i></div>
+              <div>
+                <h6>Pengumuman Masjid</h6>
+                <p>Informasi penting disampaikan langsung melalui pengeras suara masjid — media komunikasi paling efektif menjangkau seluruh warga secara serentak dan cepat.</p>
+              </div>
+            </div>
+          </div>
+          <!-- WhatsApp -->
+          <div class="col-md-6">
+            <div class="sid-channel">
+              <div class="sid-channel-icon" style="background:#25D366;"><i class="bi bi-whatsapp"></i></div>
+              <div>
+                <h6>Grup WhatsApp</h6>
+                <p>Grup resmi desa di WhatsApp digunakan untuk berbagi informasi, pengumuman kegiatan, dan koordinasi antar perangkat desa dan warga secara real-time.</p>
+              </div>
+            </div>
+          </div>
+          <!-- RT/RW -->
+          <div class="col-md-6">
+            <div class="sid-channel">
+              <div class="sid-channel-icon" style="background:var(--blue-sky);"><i class="bi bi-person-check-fill"></i></div>
+              <div>
+                <h6>Ketua RT / RW</h6>
+                <p>Ketua RT dan RW menjadi penghubung utama antara pemerintah desa dan warga. Informasi diteruskan secara bertingkat hingga ke setiap rumah tangga.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Door to Door -->
+          <div class="col-md-6">
+            <div class="sid-channel">
+              <div class="sid-channel-icon" style="background:#8BC34A;color:var(--dark);"><i class="bi bi-house-door-fill"></i></div>
+              <div>
+                <h6>Penyampaian Langsung</h6>
+                <p>Untuk informasi mendesak atau warga yang tidak terjangkau media lain, petugas desa menyampaikan langsung ke rumah — memastikan tak ada warga yang terlewat.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="pt-5 pb-3">
+  <div class="container">
+    <div class="row g-4 mb-4">
+
+      <!-- Tentang Desa -->
+      <div class="col-lg-4">
+        <div class="footer-title">
+          <i class="bi bi-tree-fill me-2" style="color:var(--gold);"></i>
+          Negeri Adm. Kobimukti
+        </div>
+        <p style="font-size:.85rem;line-height:1.75;color:rgba(255,255,255,.5);">
+          Desa agraris yang maju dan mandiri berbasis kekayaan alam Seram — membangun masyarakat sejahtera yang berjalan beriringan dengan alam dan tradisi.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="d-flex align-items-center justify-content-center" style="width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:6px;color:rgba(255,255,255,.6);transition:all .2s;" onmouseover="this.style.background='var(--blue-sky)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" class="d-flex align-items-center justify-content-center" style="width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:6px;color:rgba(255,255,255,.6);transition:all .2s;" onmouseover="this.style.background='#25D366';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a href="#" class="d-flex align-items-center justify-content-center" style="width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:6px;color:rgba(255,255,255,.6);transition:all .2s;" onmouseover="this.style.background='var(--blue-sky)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Menu Cepat -->
+      <div class="col-lg-3 col-6">
+        <div class="footer-title">Menu Cepat</div>
+        <ul class="list-unstyled" style="font-size:.85rem;">
+          <li class="mb-1"><a href="#beranda"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Beranda</a></li>
+          <li class="mb-1"><a href="#profil"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Profil Desa</a></li>
+          <li class="mb-1"><a href="#visi-misi"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Visi &amp; Misi</a></li>
+          <li class="mb-1"><a href="#organisasi"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Struktur Organisasi</a></li>
+          <li class="mb-1"><a href="#pelayanan"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Pelayanan Desa</a></li>
+          <li><a href="#sid"><i class="bi bi-chevron-right me-1" style="font-size:.7rem;color:var(--gold);"></i>Sistem Informasi</a></li>
+        </ul>
+      </div>
+
+      <!-- Layanan -->
+      <div class="col-lg-2 col-6">
+        <div class="footer-title">Layanan</div>
+        <ul class="list-unstyled" style="font-size:.82rem;">
+          <li class="mb-1"><a href="#pelayanan">Surat Domisili</a></li>
+          <li class="mb-1"><a href="#pelayanan">Surat Usaha</a></li>
+          <li class="mb-1"><a href="#pelayanan">Pengantar KTP</a></li>
+          <li class="mb-1"><a href="#pelayanan">Pengantar KK</a></li>
+          <li><a href="#pelayanan">Surat Tidak Mampu</a></li>
+        </ul>
+      </div>
+
+
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2025 Negeri Administratif Kobimukti. Semua hak dilindungi.</span>
+      <span>
+        Kecamatan Seram Utara Timur Kobi · Kabupaten Maluku Tengah · Provinsi Maluku
+      </span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Tombol Kembali ke Atas -->
+<button id="backToTop" title="Kembali ke atas">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+
+<!-- ============================================================
+     BOOTSTRAP 5 JS CDN
+============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ============================================================
+     CUSTOM JAVASCRIPT
+============================================================ -->
+<script>
+  // ── 1. SCROLL REVEAL — elemen muncul saat masuk viewport
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── 2. ACTIVE NAV LINK berdasarkan scroll (Scrollspy manual)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#mainNav .nav-link');
+  const activateNav = () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  };
+  window.addEventListener('scroll', activateNav);
+
+  // ── 3. BACK TO TOP button
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── 4. SMOOTH CLOSE navbar collapse setelah klik link (mobile)
+  document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const collapse = bootstrap.Collapse.getInstance(document.getElementById('navMenu'));
+      if (collapse) collapse.hide();
+    });
+  });
+
+  // ── 5. COUNTER ANIMASI angka statistik di hero
+  const animateCount = (el, target, suffix = '') => {
+    let start = 0;
+    const step = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target.toLocaleString('id-ID') + suffix; clearInterval(interval); }
+      else el.textContent = start.toLocaleString('id-ID') + suffix;
+    }, 22);
+  };
+  // Counter animasi dihapus (stat strip hanya RT/RW statis)
+</script>
+
+</body>
+</html>
